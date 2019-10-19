@@ -1,0 +1,36 @@
+<div class="class1">
+  <h1> Details of Employess </h1>
+</div>
+<!-- <input type="text" [(ngModel)] = "_data.totalCount"> -->
+ <div class='table-responsive'>
+            <table class='table table-bordered table-hover'>
+                <thead>
+                    <tr> 
+                        <th>Image </th>
+                        <th> Name</th>
+                        <th> Email</th>
+                        <th> Phone No</th>
+                        <th>  Topic</th>
+                        <th> Timings</th>
+                    </tr>
+                </thead>
+                <tbody>
+                      
+                        <tr *ngFor='let emp of employess'>
+                         <td>
+                            <img src= 'http://localhost:5000/images/{{emp.profile_image}}'  style="width:150px"
+     alt="Place image title"
+     *ngIf="!isImageLoading; else noImageFound">        
+                        </td>
+                         <td>
+                           {{emp.name | uppercase}}
+                        </td>
+                        <td>{{emp.email|uppercase}}</td>
+                        <td>{{emp.phone}}</td>
+                        <td>{{emp.topic | uppercase}}</td>
+                        <td>{{emp.timePreference}}</td>
+                    </tr>
+                </tbody>
+            </table>            
+    </div>
+

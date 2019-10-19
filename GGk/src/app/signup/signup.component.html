@@ -1,0 +1,53 @@
+<!-- <div>
+  <input type="text" [(ngModel)]="_enrollmentservice.totalCount"></div>
+ -->
+
+<div class="container-fluid mb-5">
+  <h1>Enrollment Form </h1>
+  <form #userForm="ngForm" (ngSubmit)= "onSubmit(Image)" novalidate>
+    <div class="form-group">
+      <label>Name</label>
+      <input type="text" required #name="ngModel" 
+      [class.is-invalid]="name.invalid && name.touched" class="form-control" 
+      name="username" [(ngModel)]="userModel.name">
+      <small class="text-danger" [class.d-none]="name.valid || name.untouched">Name is Required</small>
+    </div>
+    <div class="form-group">
+      <label>Email</label>
+      <input type="email"  class="form-control" name="email" [(ngModel)]="userModel.email">
+    </div>
+    <div class="form-group">
+      <label>Phone</label>
+      <input type="tel" #phone ="ngModel" pattern="^\d{10}$" required
+      [class.is-invalid]="phone.invalid && phone.touched" class="form-control" name="phone" [(ngModel)]="userModel.phone">
+   <div *ngIf="phone.errors && (phone.invalid || phone.touched)">
+     <small class="text-danger" *ngIf="phone.errors.required"> phone number is required </small>
+      <small class="text-danger" *ngIf="phone.errors.pattern">phone number must be 10 numbers</small>
+   </div>
+    </div>
+    <div class="form-group">
+     <select (blur)="validateTopic(topic.value)" (change)= "validateTopic(topic.value)"  #topic="ngModel" 
+     [class.is-invalid]="topicHasError && topic.touched" class="custom-select"  name="topic" [(ngModel)]="userModel.topic">
+       <option value="default">I am interested in</option>
+       <option *ngFor="let topic of topics">{{topic}}</option>
+       </select>
+       <small class="text-danger" [class.d-none] ="!topicHasError || topic.untouched">please choose a topic </small>
+    </div>
+    <div class="mb-3">
+      <label>Time Preference</label>
+      <div class="form-check">
+      <input class="form-check-input" [(ngModel)]="userModel.timePreference" type="radio" name="timePreference" value="morning">
+      <label class="form-check-label">Morning(9AM - 12AM)</label>
+    </div>
+     <div class="form-check">
+      <input class="form-check-input" [(ngModel)]="userModel.timePreference" type="radio" name="timePreference" value="evening">
+      <label class="form-check-label">Evening(5PM - 8PM)</label>
+    </div>
+    </div>
+      <div class="form-group">
+        <img [src]="imageUrl" style="width:200px;height:150px">
+        <input  id="image"  name="image" type="file" [(ngModel)]="userModel.image" style="padding-left:10px" #Image accept="image/*" (change)="handleFileInput($event.target.files)">
+      </div>
+      <button [disabled]= "userForm.form.invalid || topicHasError " class="btn btn-primary" type="submit">Submit form</button>
+  </form>
+  </div> 

@@ -1,0 +1,31 @@
+.class1{
+    background-color:#00bfff;
+    color:white;
+    padding:10px;
+}
+.topnav {
+  overflow: hidden;
+  background-color:cornsilk;
+}
+
+.topnav a {
+  float: left;
+  color: navy;
+  text-align: center;
+  padding: 14px 14px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+.topnav a:hover {
+  background-color:lightskyblue;
+  color: black;
+}
+
+.topnav a.active {
+  color:navy;
+}
+
+.topnav-right {
+  float: right;
+}

@@ -1,0 +1,17 @@
+.class1{
+    text-shadow: tomato;
+    -moz-text-decoration-color: orange;
+    background-color: burlywood;
+    padding: 10px;
+}
+.table-responsive{
+   align-items: center;
+    text-decoration: royalblue;
+    padding-top: 20px;
+    padding-left:50px;
+    padding-right:50px;
+}
+.table-responsive.table{
+    padding: 200px;
+    border-block-start-color: red;
+}
